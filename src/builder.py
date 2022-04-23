@@ -29,8 +29,3 @@ def create_graph_from_csv(nodes_file, edges_file):
   edges = load_edges_from_csv(edges_file)
   return init_graph(nodes, edges)
 
-nodes_csv = 'data/banks.csv'
-edges_csv = 'data/distances.csv'
-graph = init_graph(load_nodes_from_csv(nodes_csv), load_edges_from_csv(edges_csv))
-fig, ax = plt.subplots()
-plot(graph, target=ax)
