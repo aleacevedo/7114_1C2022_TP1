@@ -1,10 +1,10 @@
-from igraph import Graph, plot
 import matplotlib.pyplot as plt
+import networkx as nx
 
-def init_graph(nodes, edges):
-  graph = Graph(directed=False)
-  graph.add_vertices(len(nodes)+1)
-  graph.add_edges(edges)
+def init_graph(edges):
+  graph = nx.Graph()
+  for edge in edges:
+    graph.add_edge(edge[0], edge[1], weight=edge[2])
   return graph
 
 def load_nodes_from_csv(file_name): 
@@ -21,11 +21,11 @@ def load_edges_from_csv(file_name):
     next(file)
     for line in file:
       edge = line.strip().split(',')
-      edges.append((int(edge[0]), int(edge[1])))
+      edges.append((int(edge[0]), int(edge[1]), float(edge[2])))
   return edges
 
 def create_graph_from_csv(nodes_file, edges_file):
-  nodes = load_nodes_from_csv(nodes_file)
+  _nodes = load_nodes_from_csv(nodes_file)
   edges = load_edges_from_csv(edges_file)
-  return init_graph(nodes, edges)
+  return init_graph(edges)
 
