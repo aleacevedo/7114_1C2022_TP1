@@ -20,7 +20,7 @@ def solultion(model):
     visiting_order = []
     init = list(graph.nodes(data=True))[0]
     visiting_order.append(init)
-    while (len(visiting_order) < 11):
+    while (len(visiting_order) < 151):
         # Tomo vecinos del ultimo nodo visitado y los ordeno por distancia
         neighbors = [(list(graph.nodes(data=True))[nei], graph.get_edge_data(visiting_order[-1][0], nei)) for nei in list(nx.all_neighbors(graph, visiting_order[-1][0]))]
         neighbors = sort_by_distance(neighbors)

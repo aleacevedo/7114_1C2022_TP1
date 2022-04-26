@@ -13,7 +13,8 @@ graph = model.init_graph()
 
 
 greedy_solution = gr.solultion(model)
-with open('solutions/greedy_solution.txt', 'w') as f:
+print(len(greedy_solution))
+with open('solutions/greedy_solution_2.txt', 'w') as f:
     f.write(' '.join(greedy_solution))
 
 
