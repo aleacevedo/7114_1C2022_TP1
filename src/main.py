@@ -1,4 +1,4 @@
-from builder import create_graph_from_csv
+from helpers.graph_builder import create_graph_from_csv
 import matplotlib.pyplot as plt
 import networkx as nx
 
