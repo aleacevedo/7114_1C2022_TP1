@@ -31,7 +31,8 @@ def solultion(model):
                 actual_charge += node[0][1]['request']
                 total_distance += node[1]['weight']
                 break
-    path = [str(node[0]) for node in visiting_order[1:]]
+    visiting_order.append(init)
+    path = [str(node[0]) for node in visiting_order]
     return path
             
 
