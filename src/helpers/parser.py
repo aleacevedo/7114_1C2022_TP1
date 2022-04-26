@@ -2,12 +2,10 @@ from model import Model
 
 def parse_requests(file, model):
     while ((line := file.readline().rstrip('\n')) != 'FIN DEMANDAS'):
-        print('LINEA', line)
-        model.request.append(int(line.split(" ")[1]))
+        model.requests.append(int(line.split(" ")[1]))
 
 def parse_cords(file, model):
     while ((line := file.readline().rstrip('\n')) != 'EOF'):
-        print('LINEA', line)
         parsed_line = line.split(" ")
         model.nodes.append((float(parsed_line[1]), float(parsed_line[2])))
 
@@ -19,7 +17,6 @@ def parse_file(file_name):
             #print('LINEA', line)
             parsed_line = line.split(" ")
             cmd = parsed_line[0]
-            print('CMD', cmd)
             if (cmd == 'CAPACIDAD:'):
                 model.capacity = int(parsed_line[1])
             elif (cmd == 'DIMENSION:'):

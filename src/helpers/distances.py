@@ -7,10 +7,4 @@ def deg2rad(deg):
 def coor_to_km(x, y):
     lat1, lon1 = x
     lat2, lon2 = y
-    R = 6371 # Radius of the earth in km
-    dLat = deg2rad(lat2-lat1)
-    dLon = deg2rad(lon2-lon1)
-    a = math.sin(dLat/2) * math.sin(dLat/2) + math.cos(deg2rad(lat1)) * math.cos(deg2rad(lat2)) * math.sin(dLon/2) * math.sin(dLon/2)
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    d = R * c
-    return d
+    return math.sqrt((lat1 - lat2)**2 + (lon1 - lon2)**2)
