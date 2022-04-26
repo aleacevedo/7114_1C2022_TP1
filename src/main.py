@@ -1,11 +1,16 @@
 from helpers.graph_builder import create_graph_from_csv
 import matplotlib.pyplot as plt
+from helpers.parser import parse_file
 import networkx as nx
 
 nodes_csv = 'data/banks.csv'
 edges_csv = 'data/distances.csv'
-graph = create_graph_from_csv(nodes_csv, edges_csv)
+data = 'data/data_mod.txt'
 
-x = nx.shortest_path(graph, 1, 2)
-print(x)
+model = parse_file(data)
+graph = model.init_graph()
+
+nx.draw(graph)  # networkx draw()
+plt.draw()  # pyplot draw()
+plt.show()
 

@@ -4,7 +4,9 @@ def deg2rad(deg):
     return deg * (math.pi/180)
 
 # in kilometers
-def coor_to_km(lat1, lon1, lat2, lon2):
+def coor_to_km(x, y):
+    lat1, lon1 = x
+    lat2, lon2 = y
     R = 6371 # Radius of the earth in km
     dLat = deg2rad(lat2-lat1)
     dLon = deg2rad(lon2-lon1)
