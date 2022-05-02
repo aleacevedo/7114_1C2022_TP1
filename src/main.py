@@ -19,5 +19,5 @@ graph = model.init_graph()
 #     f.write(' '.join(greedy_solution))
 
 bt_solution = [str(s) for s in bt.solution(model)]
-with open('solutions/bt_solution_1.txt', 'w') as f:
+with open('solutions/bt_solution_2.txt', 'w') as f:
     f.write(' '.join(bt_solution))

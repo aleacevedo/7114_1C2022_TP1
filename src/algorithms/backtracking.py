@@ -13,8 +13,9 @@ def filter_visited(neighbors, visited):
     return res
 
 
-def solution_recursive(model, graph, next_stop_id, path, actual_charge, depth):
+def solution_recursive(model, graph, next_stop_id, path, actual_charge, solutions, total_distance):
     if len(path) == 151:
+        solutions.append((path, {"weight": total_distance}))
         return path
     neighbors = [(list(graph.nodes(data=True))[nei], graph.get_edge_data(
         next_stop_id, nei)) for nei in list(nx.all_neighbors(graph, next_stop_id))]
@@ -24,11 +25,13 @@ def solution_recursive(model, graph, next_stop_id, path, actual_charge, depth):
         neighbor_id = neighbor[0][0]
         if actual_charge + model.requests[neighbor_id] <= model.capacity and actual_charge + model.requests[neighbor_id] >= 0:
             actual_charge += model.requests[neighbor_id]
+            total_distance += neighbor[1]['weight']
             path.append(neighbor_id)
             temp_sol = solution_recursive(
-                model, graph, neighbor_id, path, actual_charge, depth+1)
-            if temp_sol != None:
-                return temp_sol
+                model, graph, neighbor_id, path, actual_charge, solutions, total_distance)
+            if temp_sol == None:
+                path.pop()
+
     return None
 
 
@@ -37,7 +40,10 @@ def solution(model):
     path = [0]
     actual_charge = 0
     first_stop_id = 0
+    solutions = []
     sol = solution_recursive(
-        model, graph, first_stop_id, path, actual_charge, 0)
-    print(sol, len(sol))
-    return sol[1:]
+        model, graph, first_stop_id, path, actual_charge, solutions, 0)
+    # print(sol, len(sol))
+    sorted_solutions = sort_by_distance(solutions)
+    print(sorted_solutions[0])
+    return sorted_solutions[0][0]
