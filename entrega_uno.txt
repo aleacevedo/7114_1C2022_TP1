@@ -1,0 +1,29 @@
+Impresion inicial del problema
+
+Debemos encontrar el camino a seguir para no sobrepasar la capacidad del camion y no quedarnos sin dinero
+antes de recorrer el total de las sucursales, minimizando la distancia recorrida.
+
+Ideas para resolverlo
+
+Para resolverlo buscaremos minimizar la distancia en cada "salto" (camino de una sucursal a otra) cumpliendo
+siempre con las restricciones impuestas.
+
+Cambios en el codigo
+
+En primera instancia se intento con una solucion greedy donde siempre intentabamos realizar el paso siguiente
+que menos distancia signifique y cumpla con las restricciones dadas. Sin embargo esta no era la solucion optima
+que minimizaba distancia.
+
+En segunda instancia se intento hacer un backtracking que deshaga el ultimo paso en caso de que no haya opcion
+de realiar un nuevo salto sin romper las restricciones. Nuevamente esta no era la solucion optima ya que devolvia
+el primer camino encontrado.
+
+Por ultimo se hizo un intento de hacer un backtracking que pueda encontrar todos los caminos posibles para
+quedarse con el de menor distancia. Sin embargo esta opcion nos da un orden de n factorial aproximadamente lo
+cual no es factible de realizar.
+
+Comentarios finales
+
+En el ultimo paso podriamos limitar a encontrar N soluciones y una vez que encontramos esas N soluciones
+finalizar el algoritmo. Posiblemente no encontremos la optima pero si podemos reducir la distancia y usar la 
+mejor encontrada.
