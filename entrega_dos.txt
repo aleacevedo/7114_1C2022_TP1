@@ -1,0 +1,61 @@
+1. Caracterizacion
+  
+  Este problema se trata de un problema del viajante con una variante de carga que nos restringe a que dicha
+  carga no puede ser mayor de un numero constante ni menor de 0
+
+2. Objetivo
+
+  Determinar el orden de la sucursal de los bancos a visitar para recorrer el camino mas corto sin rompera
+  las restricciones impuestas
+
+3. Hipotesis
+
+  El camion tiene el combustible suficinete para hacer cualquier recorrido elegido
+  No hay ningun impedimento para hacer cualquiera de los recorridos posibles
+  No hay ningun gasto extra en el camino realizado
+  Ninguno de los bancos va a descargar o cargar mas del maximo permitido
+  No hay contratiempos ni demoras imprevistas
+  El tiempo de carga y descarga del camion en cada parada es despreciable
+
+
+4. Variables
+
+  Yij: Vale 1 si el camion va de i a j (Variable Entera Vivalente)
+  Ui: Indica orden en el que la sucursal i fue visitada (Variable Entera)
+  Distancia: Distancia recorrida total desde que el camion sale de la sede central hasta que llega (Variable Continua)
+  CargaJ: Carga de dinero que contiene el camion luego de la parada J (Variable Continua)
+  Wij: Vale 1 si el camion va a i antes que a j (Variable Entera Vivalente)
+
+5. Constantes
+  LatI: Latitud de la sucursal I
+  LongI: Longitud de la sucursal I
+  Dij: Distancia entre i y j
+  Ci: cantidad de dinero a cargar en i
+
+
+6. Restricciones
+
+  SUM(Yij, j=Central, NNN) = 1 Para todo i perteneciente a [Central...NNN]  // Salgo de todos los lugares a los que llegue
+  SUM(Yij, i=Central, NNN) = 1 Para todo j pertenenciente a [Central...NNN] // Llego a todos los lugares posibles
+  Ui - Uj + N*Yij <= (N-1) Para todo i perteneciente a NNN                 // Evitar Subtoures
+                           Para todo j perteneciente a NNN
+                           i != j 
+                           Siendo N la cantidad de bancos a recorrer
+  
+
+  Uj <= Ui + M*Wij Para todo [i,j] perteneciente a [Central...NNN]
+  Ui <= Uj + M*(1-Wij) Para todo [i,j] perteneciente a [Central...NNN]
+
+  CargaJ = SUM(Ci*Wij, i=Central, NNN) + Cj Para todo j pertenenciente a [Central...NNN]
+
+  0 <= CargaJ <= CargaMaxima Para todo j pertenencienta a [Central...NNN]
+
+
+7. Funcional
+
+  Dij = sqrt((LatI-LatJ)^2+(LongI-LongJ)^2)
+
+  Distancia = SUM(SUM(Dij * Yij, i=Central, NNN), j=Central, NNN)
+
+  Z(MIN) = Distancia
+
