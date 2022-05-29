@@ -18,7 +18,7 @@ def solution_recursive(model, graph, next_stop_id, path, actual_charge, solution
     if len(path) == 151:
         solutions.append(
             (path, {"weight": total_distance, "charge": actual_charge}))
-        if (len(solutions) > 2):
+        if (len(solutions) > 1):
             return True
         return False
     neighbors = [(list(graph.nodes(data=True))[nei], graph.get_edge_data(
@@ -48,12 +48,12 @@ def solution_recursive(model, graph, next_stop_id, path, actual_charge, solution
 
 
 def solution(model):
-    graph = model.init_graph()
+    graph = model.get_graph()
     path = [0]
     actual_charge = 0
     first_stop_id = 0
     solutions = []
-    bestSolution = (None, {"weight": 8639.94})  # Mi mejor solucion hasta ahora
+    bestSolution = (None, {"weight": 9223372036854775807})  # Mi mejor solucion hasta ahora
     sol = solution_recursive(
         model, graph, first_stop_id, path, actual_charge, solutions, 0, bestSolution)
     # print(sol, len(sol))

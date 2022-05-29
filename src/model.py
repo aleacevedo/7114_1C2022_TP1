@@ -1,3 +1,4 @@
+
 from helpers.distances import coor_to_km
 import networkx as nx
 
@@ -28,7 +29,12 @@ class Model:
                 for j in range(self.dimension+1):
                     if(i != j):
                         self.graph.add_edge(i, j, weight=self.euclidean_distance(self.nodes[i], self.nodes[j]))
+        print('Inited Graph ', self.distance_type)
+        print('Size: ', len(self.nodes), self.dimension)
         return self.graph
 
     def euclidean_distance(self, node1, node2):
         return coor_to_km(node1, node2)
+
+    def get_graph(self):
+        return self.graph

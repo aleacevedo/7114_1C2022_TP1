@@ -9,9 +9,12 @@ nodes_csv = 'data/banks.csv'
 edges_csv = 'data/distances.csv'
 data = 'data/data.txt'
 
+print('//////// PARSING FILE... ////////')
 model = parse_file(data)
+print('//////// INIT GRAPH... ////////')
 graph = model.init_graph()
 
+print('//////// GOING TO BACKTRACK... ////////')
 
 # greedy_solution = gr.solultion(model)
 # print(len(greedy_solution))
@@ -19,5 +22,5 @@ graph = model.init_graph()
 #     f.write(' '.join(greedy_solution))
 
 bt_solution = [str(s) for s in bt.solution(model)]
-with open('solutions/bt_solution_2.txt', 'w') as f:
+with open('solutions/bt_entrega_3.txt', 'w') as f:
     f.write(' '.join(bt_solution))
