@@ -7,7 +7,7 @@ import algorithms.backtracking as bt
 
 nodes_csv = 'data/banks.csv'
 edges_csv = 'data/distances.csv'
-data = 'data/data.txt'
+data = 'data/data_2.txt'
 
 print('//////// PARSING FILE... ////////')
 model = parse_file(data)
@@ -22,5 +22,5 @@ print('//////// GOING TO BACKTRACK... ////////')
 #     f.write(' '.join(greedy_solution))
 
 bt_solution = [str(s) for s in bt.solution(model)]
-with open('solutions/bt_entrega_3.txt', 'w') as f:
+with open('solutions/entrega_2.txt', 'w') as f:
     f.write(' '.join(bt_solution))

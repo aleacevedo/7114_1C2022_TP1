@@ -15,7 +15,7 @@ def filter_visited(neighbors, visited):
 
 def solution_recursive(model, graph, next_stop_id, path, actual_charge, solutions, total_distance, bestSolution):
 
-    if len(path) == 151:
+    if len(path) == model.get_dimension()+1:
         solutions.append(
             (path, {"weight": total_distance, "charge": actual_charge}))
         if (len(solutions) > 1):
@@ -53,10 +53,11 @@ def solution(model):
     actual_charge = 0
     first_stop_id = 0
     solutions = []
-    bestSolution = (None, {"weight": 9223372036854775807})  # Mi mejor solucion hasta ahora
+    # Mi mejor solucion hasta ahora
+    bestSolution = (None, {"weight": 9223372036854775807})
     sol = solution_recursive(
         model, graph, first_stop_id, path, actual_charge, solutions, 0, bestSolution)
     # print(sol, len(sol))
     sorted_solutions = sort_by_distance(solutions)
     print(sorted_solutions[0])
-    return sorted_solutions[0][1:]
+    return sorted_solutions[0][0][1:]
