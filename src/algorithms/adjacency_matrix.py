@@ -21,7 +21,6 @@ def solution(model):
 
     print(' Creating matrix...')
     for i in range(len(nodes)):
-        print(i)
         matrix.append([coor_to_km(nodes[i], node) for node in nodes])
 
     print(' Solving...')
@@ -36,7 +35,8 @@ def solution(model):
         path.append(next_node)
         actual_charge += requests[next_node]
         total_distance += next_distance
+        current_node = next_node
         visited[next_node] = True
-        print("Current " + len(path).__str__() + " cities")
 
-    return [str(x) for x in path]
+    print(' Total distance: ', total_distance)
+    return [str(x) for x in path[1:]]
