@@ -1,6 +1,5 @@
 
 from helpers.distances import coor_to_km
-import networkx as nx
 
 
 class Node:
@@ -14,7 +13,7 @@ class Model:
     requests = [0]
     nodes = [(0, 0)]
     distance_type = ''
-    graph = nx.Graph()
+    #graph = nx.Graph()
 
     def __init__(self):
         pass
@@ -40,7 +39,15 @@ class Model:
         return coor_to_km(node1, node2)
 
     def get_graph(self):
+        if(len(self.graph) == 0):
+            self.init_graph()
         return self.graph
 
     def get_dimension(self):
         return self.dimension
+
+    def get_nodes(self):
+        return self.nodes
+
+    def get_requests(self):
+        return self.requests

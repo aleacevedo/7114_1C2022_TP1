@@ -59,3 +59,30 @@
 
   Z(MIN) = Distancia
 
+Impresion inicial del problema
+
+Se trata del mismo problema que en la entrega 1 pero con sus parametros diferentes y una cantidad
+de puntos sustancialmente mayor
+
+Ideas para resolverlo
+
+Para resolverlo utilizare el mismo algoritmos que en la entrega anterior pero reducire la cantidad
+de caminos a encontar a solo 1 ya que sino sera imposible de manejar en cuanto a tiempos
+
+Luego de varios intentos llegue a la conclusion que el problema se me volvia inmanejable con la
+implementacion realizada debido al gasto de memoria desmedido de la libreria que estaba utilizando
+por lo tanto decidi utilizar otro camino usando matriz de adyacencia hecha a mano. 
+
+Cambios en el codigo
+
+Cambio la variable que controla cantidad de caminos a encontrar
+
+Cambio el algoritmo para que solo genere el grafo una vez.
+
+Implementacion de matriz de adyacencia para evitar el uso de la libreria nx
+
+Comentarios finales
+
+Usando esta nueva implementacion la corrida es mucho mas rapido por lo que podriamos hacer lo planteado
+en la entrega anterior y buscar los mejores resultados de N corridas
+
