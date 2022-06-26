@@ -28,7 +28,7 @@ def solution(model):
     while(len(path) < model.get_dimension()+1):
         next_distance = float("inf")
         for neighbour in range(len(matrix[current_node])):
-            if(not visited[neighbour] and can_go(model, requests[neighbour], actual_charge)):
+            if(not visited[neighbour]):
                 if(matrix[current_node][neighbour] < next_distance):
                     next_distance = matrix[current_node][neighbour]
                     next_node = neighbour

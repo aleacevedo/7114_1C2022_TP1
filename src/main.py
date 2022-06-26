@@ -5,7 +5,7 @@ import algorithms.adjacency_matrix as adj_matrix
 
 nodes_csv = 'data/banks.csv'
 edges_csv = 'data/distances.csv'
-data = 'data/data_2.txt'
+data = 'data/data_3.txt'
 
 print('//////// PARSING FILE... ////////')
 model = parse_file(data)
